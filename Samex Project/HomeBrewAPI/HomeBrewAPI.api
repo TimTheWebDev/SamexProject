@@ -1,0 +1,112 @@
+swagger: '2.0'
+info:
+  description: API
+  version: 1.0.0
+  title: Simple Form API
+  contact:
+    email: tim@tim.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+tags:
+- name: admins
+  description: Secured Admin-only calls
+- name: developers
+  description: Operations available to regular developers
+
+paths:
+  /form:
+    get:
+      tags:
+      - developers
+      summary: searches users
+      operationId: searchUsers
+      description: |
+        By passing in the appropriate options, you can search for
+        available users in the system
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: searchString
+        description: pass an optional search string for looking up inventory
+        required: false
+        type: string
+      - in: query
+        name: skip
+        description: number of records to skip for pagination
+        type: integer
+        format: int32
+        minimum: 0
+      - in: query
+        name: limit
+        description: maximum number of records to return
+        type: integer
+        format: int32
+        minimum: 0
+        maximum: 50
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/User'
+        400:
+          description: bad input parameter
+    post:
+      tags:
+      - developers
+      summary: adds a new user
+      operationId: addUsers
+      description: Adds a user to the system
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: user
+        description: Adds user (first name, last, email, phone number, hexId)
+        schema:
+          $ref: '#/definitions/User'
+      responses:
+        201:
+          description: item created
+        400:
+          description: invalid input, object invalid
+        409:
+          description: an existing item already exists
+definitions:
+  User:
+    type: object
+    required:
+    - firstName
+    - lastName
+    - email
+    - phone
+    - hexId
+    properties:
+      firstName:
+        type: string
+        example: Bob
+      lastName:
+        type: string
+        example: Jones
+      email:
+        type: string
+        example: bobjones@bob.com
+      phone:
+        type: string
+        example: 408-867-5309
+      hexId:
+        type: string
+        example: 74696d313233214023
+  
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+basePath: /TimTheWebDev/FormAPI/1.0.0
+schemes:
+ - https

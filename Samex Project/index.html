@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Samex Registration Page</title>
+    <link rel="stylesheet" href="css/main.css">
+    <script src="js/Validators.js"></script>
+</head>
+
+<body>
+    <h1>Samex</h1>
+    <h2>User Registration Page</h2>
+    <form name="registrationForm" method="POST" action="result" id="form">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required="true">
+        <span id='firstNameValid'> </span><br><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName">
+        <span id='lastNameValid'></span><br><br>
+ 
+        <label for="email">Email Address:</label>
+        <input type="email" id="email" name="email" required="true">
+        <span id='emailValid'> </span><br><br>
+
+        <label for="phone">Phone Number:</label>
+        <input type="tel" id="phone" name="phone" required="phone">
+        <span id='phoneValid'> </span><br><br>
+
+        <input type="submit" value="Register">
+    </form>
+
+    <div id="apiResponse"></div>
+
+    <script src="jquery-2.1.0.min.js"></script>
+
+    <script src="app.js"></script>
+
+    <script src="js/Listeners.js"></script>
+
+    <script src="js/EmailAddressToHex.js"></script>
+
+    <footer id="disclaimer">
+        <br>    
+                <p>&copy; 2020 Samex</p>
+    </footer>
+</body>
+</html>

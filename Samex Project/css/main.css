@@ -1,0 +1,18 @@
+h1 {
+    text-align: center;
+    color: blue;
+  }
+
+  h2{
+    text-align: center;
+    color: blue;
+    padding-bottom: 60px;
+  }
+
+  #form{
+    padding-left: 100px;
+  }
+
+  #disclaimer{
+    text-align: center;
+  }
